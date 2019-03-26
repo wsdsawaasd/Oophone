@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function Phone(name, pin) {
+        this.pin = pin;
+        this.name = name;
+        this.massage = '';
+        this.outbox = [];
+        this.inbox = [];
+        this.setMassage = function (message) {
+            this.massage = message;
+        };
+        this.getName = function () {
+            return this.name;
+        };
+        this.getPin = function () {
+            return this.pin;
+        };
+        this.getMassage = function () {
+            return this.massage;
+        };
+        this.sendMessage = function (phone) {
+            phone.inbox.push( this.massage );
+            this.outbox.push( this.massage );
+            this.pin--;
+        };
+        this.getInbox = function () {
+            return this.inbox;
+        }
+
+    }
+    let noKia = new Phone( "no kia", 99 );
+    let samSung = new Phone( "sam sung", 88 );
+    noKia.setMassage( "ch ao ban " );
+    noKia.sendMessage( samSung );
+    noKia.setMassage( "ch ao ban 2 " );
+    noKia.sendMessage( samSung );
+    document.write( samSung.getInbox() );
+    document.write( noKia.getPin() );
+
+</script>
+</body>
+</html>
